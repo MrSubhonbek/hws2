@@ -22,6 +22,7 @@ const Greeting: React.FC<GreetingPropsType> = ({
   totalUsers,
   lastUserName,
 }) => {
+  const inputClass = error ? "border-rose-500 text-rose-500" : "";
   return (
     <div id={"hw3-form"} className="mt-5">
       <div className="text-black text-opacity-50 text-sm font-normal">
@@ -36,13 +37,13 @@ const Greeting: React.FC<GreetingPropsType> = ({
             value={name}
             className={clsx(
               "rounded-md border border-neutral-300 px-3 py-2 w-full h-[40px] ring-0 outline-none",
-              error && "border-rose-500"
+              error && inputClass
             )}
             onChange={setNameCallback}
             onKeyDown={onEnter}
             onBlur={onBlur}
           />
-          <div id={"hw3-error"} className="text-rose-500">
+          <div id={"hw3-error"} className={inputClass}>
             {error}
           </div>
         </div>
