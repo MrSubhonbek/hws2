@@ -49,10 +49,10 @@ const MessageSender = (props: MessageSenderType) => {
         <M key={"message" + m.id} {...m} />
       ))}
 
-      <div id={"hw1-send-message-form"} className={s.sendForm}>
+      <div id={"hw1-send-message-form"} className="flex gap-5 justify-end ">
         <textarea
           id={"hw1-textarea"}
-          className={s.textarea}
+          className="rounded-full w-full bg-slate-50 px-6 py-2 resize-none "
           ref={textareaRef}
           title={"Shift+Enter for send"}
           placeholder={"Type your message"}
@@ -60,7 +60,10 @@ const MessageSender = (props: MessageSenderType) => {
           onChange={onChange}
           onKeyDown={onKeyDown}
         />
-        <button id={"hw1-button"} className={s.button} onClick={addMessage}>
+        <button
+          id={"hw1-button"}
+          className="rounded-full py-2 bg-sky-300 px-6"
+          onClick={addMessage}>
           Send
         </button>
       </div>
