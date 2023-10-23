@@ -48,7 +48,7 @@ export const friendMessage0: MessageType = {
 
 const HW1 = () => {
   return (
-    <div id={"hw1"} className="container mx-auto px-2 ">
+    <div id={"hw1"}>
       <div className="text-black text-xl font-semibold mt-32">Hometask #1</div>
       <div className="flex flex-col my-6 gap-5 border-y border-solid py-2.5">
         <div className="flex flex-col gap-5">
