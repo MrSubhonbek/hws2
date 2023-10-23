@@ -23,7 +23,7 @@ const Greeting: React.FC<GreetingPropsType> = ({
   lastUserName,
 }) => {
   const errorInput = error
-    ? `border-rose-500 text-rose-500 ${s.errorInput}`
+    ? `border-rose-500 text-rose-500 errorInput ${s.errorInput}`
     : "";
   return (
     <div id={"hw3-form"} className="mt-5">
