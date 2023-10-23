@@ -1,6 +1,6 @@
 import React, { ChangeEvent, KeyboardEvent } from "react";
 import s from "./Greeting.module.css";
-
+import { clsx } from "clsx";
 type GreetingPropsType = {
   name: string;
   setNameCallback: (value: ChangeEvent<HTMLInputElement>) => void;
@@ -22,26 +22,27 @@ const Greeting: React.FC<GreetingPropsType> = ({
   totalUsers,
   lastUserName,
 }) => {
-  const inputClass = s.errorInput; // need to fix with (?:)
-
   return (
-    <div id={"hw3-form"} className={s.greetingForm}>
-      <div className={s.text}>
+    <div id={"hw3-form"} className="mt-5">
+      <div className="text-black text-opacity-50 text-sm font-normal">
         {"Людей добавили: "}
         <span id={"hw3-users-total"}>{totalUsers}</span>
       </div>
 
-      <div className={s.inputAndButtonContainer}>
-        <div>
+      <div className="my-2 flex gap-3">
+        <div className="w-full">
           <input
             id={"hw3-input"}
             value={name}
+            className={clsx(
+              "rounded-md border border-neutral-300 px-3 py-2 w-full h-[40px] ring-0 outline-none",
+              error && "border-rose-500"
+            )}
             onChange={setNameCallback}
-            className={inputClass}
             onKeyDown={onEnter}
             onBlur={onBlur}
           />
-          <div id={"hw3-error"} className={s.error}>
+          <div id={"hw3-error"} className="text-rose-500">
             {error}
           </div>
         </div>
@@ -49,14 +50,14 @@ const Greeting: React.FC<GreetingPropsType> = ({
         <button
           id={"hw3-button"}
           onClick={addUser}
-          className={s.button}
-          disabled={!name.trim()}>
-          add
+          disabled={!name.trim()}
+          className="py-1 px-6 max-h-[40px] text-white bg-sky-300 rounded-md">
+          Add
         </button>
       </div>
 
       {lastUserName && (
-        <div className={s.greeting}>
+        <div>
           Привет <span id={"hw3-last-user"}>{lastUserName}</span>!
         </div>
       )}
