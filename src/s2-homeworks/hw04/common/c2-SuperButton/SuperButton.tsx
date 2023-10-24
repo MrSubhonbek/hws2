@@ -25,15 +25,15 @@ const SuperButton: React.FC<SuperButtonPropsType> = ({
       disabled={disabled}
       className={clsx(
         finalClassName,
-        "px-5 py-1.5 bg-sky-300 text-white rounded-md hover:bg-sky-400 hover:shadow-md disabled:shadow-none disabled:bg-opacity-50 disabled:text-neutral-300",
+        "px-5 py-1.5 bg-sky-300 text-white rounded-md hover:bg-sky-400 hover:shadow-md ",
         disabled && s.disabled,
-        disabled && "",
+        disabled && "!bg-opacity-50 text-neutral-300 !shadow-none",
         xType === "red" && s.red,
         xType === "red" &&
-          "bg-rose-500 hover:bg-rose-600 disabled:hover:bg-rose-500 disabled:hover:bg-opacity-50",
+          "!bg-rose-500 hover:bg-rose-600 disabled:hover:bg-rose-500 disabled:hover:bg-opacity-50",
         xType === "secondary" && s.secondary,
         xType === "secondary" &&
-          "bg-transparent border border-sky-300 text-sky-300 hover:bg-sky-100"
+          "!bg-transparent border border-sky-300 !text-sky-300"
       )}
       {...restProps} // отдаём кнопке остальные пропсы если они есть (children там внутри)
     />
