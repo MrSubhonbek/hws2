@@ -1,36 +1,43 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react'
-import s from './SuperButton.module.css'
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import s from "./SuperButton.module.css";
+import clsx from "clsx";
 
 // тип пропсов обычной кнопки, children в котором храниться название кнопки там уже описан
-type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement>
+type DefaultButtonPropsType = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
 type SuperButtonPropsType = DefaultButtonPropsType & {
-    xType?: string
-}
+  xType?: string;
+};
 
-const SuperButton: React.FC<SuperButtonPropsType> = (
-    {
-        xType,
-        className,
-        disabled,
-        ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
-    }
-) => {
-    const finalClassName = s.button
-        // + (disabled
-        //         ? ...
-        //         : xType === 'red'
-        //             ? ...
-        + (className ? ' ' + className : '') // задачка на смешивание классов
+const SuperButton: React.FC<SuperButtonPropsType> = ({
+  xType,
+  className,
+  disabled,
+  ...restProps // все остальные пропсы попадут в объект restProps, там же будет children
+}) => {
+  const finalClassName = s.button + (className ? " " + className : ""); // задачка на смешивание классов
 
-    return (
-        <button
-            disabled={disabled}
-            className={finalClassName}
-            {...restProps} // отдаём кнопке остальные пропсы если они есть (children там внутри)
-        />
-    )
-}
+  return (
+    <button
+      disabled={disabled}
+      className={clsx(
+        finalClassName,
+        "px-5 py-1.5 bg-sky-300 text-white rounded-md hover:bg-sky-400 hover:shadow-md disabled:shadow-none disabled:bg-opacity-50 disabled:text-neutral-300",
+        disabled && s.disabled,
+        disabled && "",
+        xType === "red" && s.red,
+        xType === "red" &&
+          "bg-rose-500 hover:bg-rose-600 disabled:hover:bg-rose-500 disabled:hover:bg-opacity-50",
+        xType === "secondary" && s.secondary,
+        xType === "secondary" &&
+          "bg-transparent border border-sky-300 text-sky-300 hover:bg-sky-100"
+      )}
+      {...restProps} // отдаём кнопке остальные пропсы если они есть (children там внутри)
+    />
+  );
+};
 
-export default SuperButton
+export default SuperButton;
