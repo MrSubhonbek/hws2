@@ -25,7 +25,7 @@ const SuperButton: React.FC<SuperButtonPropsType> = ({
       disabled={disabled}
       className={clsx(
         finalClassName,
-        "px-5 py-1.5 bg-sky-300 text-white rounded-md hover:bg-sky-400 hover:shadow-md ",
+        "px-5 py-1.5 bg-sky-300 text-white rounded-md hover:bg-sky-400 hover:shadow-md default",
         disabled && s.disabled,
         disabled && "!bg-opacity-50 text-neutral-300 !shadow-none",
         xType === "red" && s.red,
