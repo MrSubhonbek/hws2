@@ -45,7 +45,6 @@ export const friendMessage0: MessageType = {
     time: "22:00",
   },
 };
-
 const HW1 = () => {
   return (
     <div id={"hw1"}>
