@@ -14,9 +14,9 @@ export const Sidebar: FC<PropsType> = ({ isOpen, handleClose }) => {
   const sidebarClass = s.sidebar + (isOpen ? " " + s.open : "");
   const location = useLocation();
   const currentPath = location.pathname;
-  return isOpen ? (
-    <>
-      <div className="z-30 fixed left-0 top-0 min-h-screen bg-white w-96 ">
+  return (
+    <div className={clsx(!isOpen && "hidden")}>
+      <div className="z-30 fixed left-0 top-0 min-h-screen bg-white w-96">
         <div className={clsx(s.background)} onClick={handleClose} />
 
         <aside className={sidebarClass}>
@@ -68,6 +68,6 @@ export const Sidebar: FC<PropsType> = ({ isOpen, handleClose }) => {
         }
         onClick={handleClose}
       />
-    </>
-  ) : null;
+    </div>
+  );
 };
