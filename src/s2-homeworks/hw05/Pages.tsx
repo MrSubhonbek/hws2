@@ -17,7 +17,7 @@ function Pages() {
       <Route path={PATH.JUNIOR} element={<Junior />} />
       <Route path={PATH.PRE_JUNIOR} element={<PreJunior />} />
       <Route path={PATH.JUNIOR_PLUS} element={<JuniorPlus />} />
-      <Route path="*" errorElement={<Error404 />} />
+      <Route path="*" errorElement={<Error404 />} element={<Error404 />} />
     </Routes>
   );
 }
